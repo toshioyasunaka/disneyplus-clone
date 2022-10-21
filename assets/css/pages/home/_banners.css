@@ -7,15 +7,15 @@
 
 .banners .arrow-slider {
     z-index: 2;
+    position: absolute;
+    margin-top: -3rem;
 }
 
 .banners .arrow-slider--left {
-    position: absolute;
     left: 3.6rem;
 }
 
 .banners .arrow-slider--right {
-    position: absolute;
     right: 3.6rem;
 }
 
@@ -33,6 +33,15 @@
     width: 90.5vw;
     flex-shrink: 0;
     padding: 0 1rem 3rem;
+    position: relative;
+}
+
+.banner-slider__counter {
+    font-size: 2rem;
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+    z-index: 1;
 }
 
 .banner-slider__link {
