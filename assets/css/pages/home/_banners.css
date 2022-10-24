@@ -69,9 +69,15 @@
     box-shadow: #000 0rem 2rem 3rem -2rem;
 }
 
+.banner-slider__title.active {
+    display: block;
+}
+
 .banner-slider__title {
+    animation: slideLeft 1s;
     position: absolute;
     width: 100%;
     left: 0;
     top: 0;
+    display: none;
 }
