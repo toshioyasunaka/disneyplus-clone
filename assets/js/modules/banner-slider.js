@@ -93,13 +93,13 @@ function onMouseDown(event, index) {
 
 function onMouseUp(event) {
     const slide = event.currentTarget;
+    const movementQnt = event.type.includes('touch') ? 50 : 150
     if(state.movementPosition > 150) {
         backwardSlide();
-    } else if (state.movementPosition < -150) {
+    } else if (state.movementPosition < -movementQnt) {
         forwardSlide();
     } else {
-        const calc = getCenterPosition(state.currentSlideIndex);
-        translateSlide(calc);
+        setVisibleSlide(state.currentSlideIndex);
     }
     slide.removeEventListener('mousemove', onMouseMove);
 }
@@ -111,7 +111,29 @@ function onMouseMove(event) {
 
 function onMouseLeave(event) {
     const slide = event.currentTarget;
-    slide.removeEventListener('mousemove', onMouseMove)
+    slide.removeEventListener('mousemove', onMouseMove);
+}
+
+function onTouchStart(event, index) {
+    const slide = event.currentTarget;
+    slide.addEventListener('touchmove', onTouchMove)
+    event.clientX = event.touches[0].clientX;
+    onMouseDown(event, index);
+}
+
+function onTouchMove(event) {
+    event.clientX = event.touches[0].clientX;
+    onMouseMove(event);
+}
+
+function onTouchEnd(event) {
+    const slide = event.currentTarget;
+    slide.removeEventListener('touchmove', onTouchMove);
+    onMouseUp(event);
+}
+
+function onResizeWindow() {
+    setVisibleSlide(state.currentSlideIndex);
 }
 
 function setListeners() {
@@ -126,10 +148,21 @@ function setListeners() {
         });
         slide.addEventListener('mouseup', onMouseUp);
         slide.addEventListener('mouseleave', onMouseLeave);
-        btnControls[index].addEventListener('click', function(event) {
-            onControlButtonClick(index)
+        btnControls[index].addEventListener('click', function() {
+            onControlButtonClick(index);
         });
+        slide.addEventListener('touchstart', function(event) {
+            onTouchStart(event, index);
+        });
+        slide.addEventListener('touchend', onTouchEnd);
     })
+    let resizeTimeOut;
+    window.addEventListener('resize', function(event) {
+        clearTimeout(resizeTimeOut);
+        resizeTimeOut = setTimeout(function() {
+            onResizeWindow();
+        }, 1000)
+    });
 }
 
 function init() {

@@ -36,14 +36,6 @@
     position: relative;
 }
 
-.banner-slider__counter {
-    font-size: 2rem;
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-    z-index: 1;
-}
-
 .banner-slider__link {
     position: relative;
 }
@@ -80,4 +72,27 @@
     left: 0;
     top: 0;
     display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .banners {
+        padding-top: 8.2rem;
+    }
+    
+    .banner-slider__item {
+        width: 85vw;
+    }
+    .banners .arrow-slider--left {
+        left: 1rem;
+    }
+    
+    .banners .arrow-slider--right {
+        right: 1rem;
+    }
+
+    .banners .controls-slider {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 4.2rem;
+    }
 }
