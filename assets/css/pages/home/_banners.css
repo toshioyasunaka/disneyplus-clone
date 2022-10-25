@@ -3,6 +3,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .banners .arrow-slider {
@@ -30,7 +31,7 @@
 }
 
 .banner-slider__item {
-    width: 90.5vw;
+    width: 91vw;
     flex-shrink: 0;
     padding: 0 1rem 3rem;
     position: relative;
