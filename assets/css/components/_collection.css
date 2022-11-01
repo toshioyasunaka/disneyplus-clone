@@ -1,5 +1,5 @@
 .collection {
-    padding-top: 1.1rem;
+    padding-top: 1rem;
     overflow: hidden;
 }
 
@@ -67,4 +67,28 @@
 
 .movie-carousel .arrow-slider--right {
     right: 3.6rem;
+}
+
+@media screen and (max-width: 1024px){
+    .collection {
+        padding-top: 0;
+        overflow: hidden;
+    }
+    
+    .movie-carousel__item {
+        width: calc(85vw / 2);
+        padding: 0 1rem 2.5rem;
+    }
+
+    .collection__title {
+        width: 85vw;
+    }
+
+    .movie-carousel .arrow-slider--left {
+        left: 1rem;
+    }
+    
+    .movie-carousel .arrow-slider--right {
+        right: 1rem;
+    }
 }
