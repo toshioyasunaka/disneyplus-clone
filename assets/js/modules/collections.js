@@ -35,10 +35,29 @@ const animateTransition = (active) => {
     }
 }
 
+const activeCurrentItems = () => {
+    const { carouselItems, state } = collectionData[currentCollectionIndex];
+    carouselItems.forEach((item, itemIndex) => {
+        item.classList.remove('active');
+        const firstItemIndex = state.currentSlideIndex * itemsPerSlide;
+        if(itemIndex >= firstItemIndex && itemIndex < firstItemIndex + itemsPerSlide) {
+            item.classList.add('active');
+        }
+    });
+}
+
+const setArrowButtonsDisplay = () => {
+    const { btnPrevious, btnNext, state, carouselItems } = collectionData[currentCollectionIndex];
+    btnPrevious.style.display = state.currentSlideIndex === 0 ? 'none' : 'block';
+    btnNext.style.display = state.currentSlideIndex === getLastSlideIndex(carouselItems) ? 'none' : 'block';
+}
+
 const setVisibleSlide = (slideIndex) => {
     const { state } = collectionData[currentCollectionIndex];
     const centerPosition = getCenterPosition(slideIndex);
     state.currentSlideIndex = slideIndex;
+    activeCurrentItems();
+    setArrowButtonsDisplay();
     animateTransition(true);
     translateSlide(centerPosition);
 }
@@ -83,7 +102,7 @@ const onMouseUp = (e) => {
     else {
         setVisibleSlide(state.currentSlideIndex);
     } 
-
+    state.movement = 0;
     const item = e.currentTarget;
     item.removeEventListener('mousemove', onMouseMove)
 }

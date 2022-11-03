@@ -7,17 +7,25 @@
 }
 
 .banners .arrow-slider {
+    height: 100%;
+    padding: 0 3rem;
     z-index: 2;
     position: absolute;
     margin-top: -3rem;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.banners .arrow-slider:hover {
+    opacity: 1;
 }
 
 .banners .arrow-slider--left {
-    left: 3.6rem;
+    left: 0rem;
 }
 
 .banners .arrow-slider--right {
-    right: 3.6rem;
+    right: 0rem;
 }
 
 .banners .controls-slider {
@@ -35,6 +43,11 @@
     flex-shrink: 0;
     padding: 0 1rem 3rem;
     position: relative;
+    opacity: .5;
+}
+
+.banner-slider__item.active {
+    opacity: 1;
 }
 
 .banner-slider__link {
@@ -83,12 +96,17 @@
     .banner-slider__item {
         width: 85vw;
     }
+
+    .banners .arrow-slider {
+        padding: 0 1rem;
+    }
+
     .banners .arrow-slider--left {
-        left: 1rem;
+        left: 0rem;
     }
     
     .banners .arrow-slider--right {
-        right: 1rem;
+        right: 0rem;
     }
 
     .banners .controls-slider {
