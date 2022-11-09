@@ -98,10 +98,12 @@
     }
 
     .movie-carousel .arrow-slider--left {
-        left: 1rem;
+        padding: 0 1rem;
+        left: 0rem;
     }
     
     .movie-carousel .arrow-slider--right {
-        right: 1rem;
+        padding: 0 1rem;
+        right: 0rem;
     }
 }
