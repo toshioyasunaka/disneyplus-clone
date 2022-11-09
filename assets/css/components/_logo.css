@@ -1,0 +1,8 @@
+.logo__link {
+    background: url(../../imgs/logo.svg) no-repeat;
+    background-position: center;
+    background-size: 105%;
+    width: 7.5rem;
+    height: 4rem;
+    display: inline-block;
+}
